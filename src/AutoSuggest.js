@@ -94,7 +94,7 @@ export default class AutoSuggest extends Component {
   }
   componentDidMount () {
     // when user hits the return button, clear the terms
-    //Keyboard.addListener('keyboardDidHide', () => this.clearTerms())
+    Keyboard.addListener('keyboardDidHide', () => this.clearTerms())
   }
 
   getAndSetWidth () {
