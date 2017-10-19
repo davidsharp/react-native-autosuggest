@@ -12,7 +12,7 @@ import {
   Button
 } from 'react-native'
 import debounce from '../vendor/throttle-debounce/debounce'
-import { version } from 'react-native/package.json'
+//import { version } from 'react-native/package.json'
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 
 // 'term' objects take the shape
@@ -192,7 +192,7 @@ export default class AutoSuggest extends Component {
                 position: 'absolute', width: this.state.TIWidth, backgroundColor: 'white', zIndex: 3,
                 borderBottomLeftRadius: 4, borderBottomRightRadius: 4, borderColor:"#cccccc", borderWidth: this.state.results.length>0 ? 1 : 0
               }}
-              keyboardShouldPersistTaps={version >= '0.4.0' ? 'always' : true}
+              keyboardShouldPersistTaps={'always'}
               initialListSize={15}
               enableEmptySections
               dataSource={ds.cloneWithRows(this.state.results)}
