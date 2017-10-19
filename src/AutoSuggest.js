@@ -23,6 +23,7 @@ export default class AutoSuggest extends Component {
     containerStyles: PropTypes.object,
     clearBtnStyles: PropTypes.object,
     clearBtnVisibility: PropTypes.bool,
+    clearOnFocus: PropTypes.bool,
     formatString: PropTypes.func,
     otherTextInputProps: PropTypes.object,
     placeholder: PropTypes.string, // textInput
@@ -94,7 +95,6 @@ export default class AutoSuggest extends Component {
   componentDidMount () {
     // when user hits the return button, clear the terms
     //Keyboard.addListener('keyboardDidHide', () => this.clearTerms())
-    //Keyboard.addListener('keyboardWillShow', () => this.setCurrentInput(null))
   }
 
   getAndSetWidth () {
@@ -167,6 +167,7 @@ export default class AutoSuggest extends Component {
               ref="TI"
               spellCheck={false}
               defaultValue={this.state.currentInput}
+              onFocus={_=>this.props.clearOnFocus?this.setCurrentInput(null):_}
               onChangeText={(el) => {
                 this.searchTerms(el)
                 debounce(onChangeTextDebounce, this.props.onChangeText(el))
