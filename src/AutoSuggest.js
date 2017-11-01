@@ -94,7 +94,7 @@ export default class AutoSuggest extends Component {
   }
   componentDidMount () {
     // when user hits the return button, clear the terms
-    Keyboard.addListener('keyboardDidHide', () => this.clearTerms())
+    //Keyboard.addListener('keyboardDidHide', () => this.clearTerms())
   }
 
   getAndSetWidth () {
@@ -207,8 +207,10 @@ export default class AutoSuggest extends Component {
                             if (onItemPress) onItemPress(this.state.results[rowId])
                           }
                         }
+                        style={{flexDirection:'row'/*,width: this.state.TIWidth*/,flex:1,padding:5}}
                           >
-                            <Text style={this.getCombinedStyles('rowTextStyles')}>{this.termString(rowData)}</Text>
+                            { rowData.foundByID && <Text style={[this.getCombinedStyles('rowTextStyles'),{opacity:0.7, /*paddingRight: 5,*/flex:1}]}>{rowData.searchableID}</Text>}
+                            <Text style={[this.getCombinedStyles('rowTextStyles'), {width:null,flex:4}]}>{rowData.term}</Text>
                           </TouchableOpacity>
                       </RowWrapper>
           }
